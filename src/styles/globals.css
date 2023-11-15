@@ -2,26 +2,230 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  /* Header */
+  .header {
+    @apply h-fit pb-5 bg-hero overflow-hidden;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* Nav */
+  .nav {
+    @apply flex justify-between items-center py-6 px-[120px] max-sm:px-[45px] max-sm:bg-white;
+  }
+
+  .nav__logo {
+    @apply max-sm:w-[150px];
+  }
+
+  .nav__links {
+    @apply flex w-[403px] justify-between text-[#757575] max-sm:hidden;
+  }
+
+  .nav__links--highlight {
+    @apply absolute -top-5 left-14 py-[2px] px-[9px] rounded-lg bg-[#E7462D] text-white text-xs font-medium;
+  }
+
+  .nav__buttons {
+    @apply flex w-[215px] justify-between items-center max-sm:w-fit;
+  }
+
+  .nav__button-signup {
+    @apply text-sm font-medium px-[18px] py-[10px] rounded-full text-white bg-primary;
+  }
+
+  .nav__button-login {
+    @apply text-sm font-medium max-sm:hidden;
+  }
+
+  .nav__mobile-list {
+    @apply fixed bottom-0 left-0 flex justify-between w-full bg-white px-[35px] py-3 gap-1  z-50 border-t sm:hidden
+  }
+
+  .nav__mobile-items {
+      @apply flex flex-col items-center gap-1 text-[#757575] text-sm
+  }
+
+  /* Headline */
+  .headline {
+    @apply flex justify-between items-center w-full h-fit px-[120px] max-sm:px-[45px] max-sm:block max-sm:relative;
+  }
+
+  .headline__content-text {
+    @apply flex flex-col gap-8 w-[482px] max-sm:w-[390px];
+  }
+
+  .headline__title {
+    @apply text-6xl font-medium text-primary max-sm:text-[48px] max-sm:mt-10;
+  }
+
+  .headline__description {
+    @apply text-lg text-[#757575] max-sm:mt-72;
+  }
+
+  .headline__button-signup {
+    @apply text-sm font-medium px-[18px] py-[10px] rounded-full text-white bg-primary shadow-[0px_8px_32px_0px_#666BE259];
+  }
+
+  .headline__button-about {
+    @apply text-sm font-medium px-[18px] py-[10px] ml-4 rounded-full bg-[#F2F2F2];
+  }
+
+  .headline__content-image {
+    @apply relative max-sm:absolute max-sm:top-36 max-sm:w-full;
+  }
+
+  .headline__image-large {
+    @apply p-[50px] rounded-full bg-[#C4C4C4] bg-opacity-[0.15] max-sm:w-[230.85px] max-sm:h-[255.31px] max-sm:p-5;
+  }
+
+  .headline__card {
+    @apply flex gap-5 absolute -left-16 bottom-0 p-[12px_50px_12px_23px] rounded-[17px] bg-[#FFFFFFBD] shadow-[0px_11px_39px_0px_#00000012] backdrop-blur-sm max-sm:left-24;
+  }
+
+  .headline__image-small {
+    @apply w-[53px];
+  }
+
+  .headline__info {
+    @apply flex flex-col;
+  }
+
+  .headline__card-title {
+    @apply text-sm font-medium;
+  }
+
+  .headline__category {
+    @apply text-xs text-[#757575] pb-2 pt-1;
+  }
+
+  /* Category */
+  .category {
+    @apply relative overflow-hidden;
+  }
+
+  .category__title {
+    @apply text-[38px] font-medium px-[120px] max-sm:px-[45px] my-12 max-sm:text-2xl;
+  }
+
+  .category__carousel {
+    @apply relative px-[120px] flex flex-col;
+  }
+
+  .category__carousel-container {
+    @apply relative w-[1920px] flex gap-[10px] ;
+  }
+
+  .category__carousel-buttons {
+    @apply flex relative  w-[240px] justify-between self-end max-sm:hidden;
+  }
+
+  .category__carousel-button {
+    @apply flex justify-between items-center w-[113px] h-[50px] box-border text-sm font-medium px-[18px] py-[8px] mt-10 rounded-full text-white bg-primary;
+  }
+
+  .category-card {
+    @apply relative w-[230px] h-[173px] box-border py-8 rounded-[17px] flex flex-col justify-center items-center duration-300 group-hover:h-[195px];
+  }
+  .category-card__title {
+    @apply font-medium mb-1 mt-6;
+  }
+
+  .category-card__text {
+    @apply text-xs;
+  }
+
+  .background-card {
+    @apply absolute h-full top-0 left-0 object-cover opacity-0 duration-300 group-hover:opacity-20 z-20;
+  }
+
+  /* Trending */
+  .trending {
+    @apply relative px-[120px] max-sm:px-[45px] max-sm:pb-[200px];
+  }
+  .trending__container-button {
+    @apply col-span-4 max-sm:hidden w-full flex justify-center;
+  }
+
+  .trending__button {
+    @apply text-sm font-medium px-[18px] py-[10px] mt-[70px] rounded-full text-white bg-primary;
+  }
+
+  .trending-cards {
+    @apply relative grid gap-5 max-sm:grid-cols-1 max-sm:justify-items-center;
+  }
+  .trending-card {
+    @apply relative w-[247.5px] h-[286px] box-border px-5 py-8 rounded-[17px] flex flex-col gap-[10px] justify-center shadow-[0px_11px_39px_0px_#00000012] min-[1398px]:w-[287.5px] min-[1398px]:h-[306px];
+  }
+
+  .trending__title {
+    @apply text-[38px] font-medium relative my-12 max-sm:text-2xl;
+  }
+
+  .trending-card__title {
+    @apply font-medium text-[26px] relative z-30;
+  }
+
+  .trending-card__text {
+    @apply text-lg font-medium text-primary relative z-30;
+  }
+
+  /* Footer */
+  .footer {
+    @apply mt-[250px] px-[120px] max-sm:hidden;
+  }
+
+  .footer__content {
+    @apply flex items-start justify-around py-20 w-full h-fit bg-[#F9FFF6]
+  }
+
+  .footer__profile {
+    @apply w-[335px] 
+  }
+  .footer__profile-address {
+    @apply text-sm text-[#757575] mt-[21px]
+  }
+
+  .footer__profile-buttons {
+    @apply flex gap-2 mt-[33px]
+  }
+
+  .footer__title-list {
+    @apply text-lg font-medium
+  }
+
+  .footer__list {
+    @apply text-sm text-[#757575] mt-[40px] flex flex-col gap-4
+  }
+
+  .footer__newsletter {
+    @apply w-[245px]
+  }
+
+  .footer__newsletter-title {
+    @apply text-lg font-medium
+  }
+
+  .footer__newsletter-text {
+    @apply text-sm text-[#757575] mt-[40px]
+  }
+
+  .footer__newsletter-input {
+    @apply my-4 py-2 px-4 w-[180px] bg-[#F9FFF6] h-10 box-border text-sm placeholder-black border-black border-r-0 border-2 rounded-l-lg
+  }
+
+  .footer__newsletter-button {
+    @apply w-[60px] box-border h-10 bg-primary rounded-r-lg text-sm font-medium text-white
+  }
+
+  .footer__input-container {
+    @apply flex items-center
+  }
+
+  .footer__newsletter-contact {
+    @apply flex gap-1 text-sm mb-[10px]
+  }
+
+  .footer__copyright {
+    @apply text-center text-xs text-[#757575] mt-12 mb-8
+  }
 }
